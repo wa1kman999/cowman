@@ -1,0 +1,33 @@
+# jwt configuration
+jwt:
+  signing-key: 'cowman'
+  expires-time: 604800
+  buffer-time: 86400
+  issuer: 'cowman'
+
+# system configuration
+system:
+  env: 'public'  # Change to "develop" to skip authentication for development mode
+  host: '127.0.0.1'
+  port: '8080'
+  db-type: 'mysql'
+  oss-type: 'local'    # 控制oss选择走本期还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
+  use-multipoint: false
+  # IP限制次数 一个小时15000次
+  iplimit-count: 15000
+  #  IP限制一个小时
+  iplimit-time: 3600
+
+# mysql connect configuration
+# 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://www.github.com/flipped-aurora/gin-vue-admin/server.com/docs/first）
+mysql:
+  path: '127.0.0.1'
+  port: '3306'
+  config: 'parseTime=true'
+  db-name: 'cowman'
+  username: 'root'
+  password: 'root'
+  max-idle-conns: 10
+  max-open-conns: 100
+  log-mode: "Silent"
+  log-zap: false
