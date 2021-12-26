@@ -16,7 +16,7 @@ func ConfigInit() error {
 	if err != nil {
 		panic(fmt.Errorf("Fatal error config file: %s \n", err))
 	}
-	if err := v.Unmarshal(&global.GBConfig); err != nil {
+	if err := v.Unmarshal(&global.CMConfig); err != nil {
 		return err
 	}
 	return nil

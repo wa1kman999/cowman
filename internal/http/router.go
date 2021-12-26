@@ -4,7 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	//userController "github.com/wa1kman999/cowman/internal/controller/user"
+	userController "github.com/wa1kman999/cowman/internal/controller/user"
+	"github.com/wa1kman999/cowman/internal/http/middleware"
 )
 
 const (
@@ -22,18 +23,12 @@ func initRouter(router *gin.Engine) error {
 		ctx.String(http.StatusOK, "ok")
 	})
 
-	//user := router.Group(v1prefix + "/")
-	// 使用中间件
-	{
-		// 新建用户
-		//user.POST("/user", userController.CreateUser)
-		// 通过id查询用户
-		//user.GET("/user/:id", userController.GetUserInfo)
-		// 查询用户列表
-		//user.POST("/user/list", userController.GetUserList)
-		// 编辑用户
-		//user.PUT("/user", userController.EditUser)
-	}
+	user := router.Group(v1prefix + "/")
+	// 登陆页面
+	user.POST("login", userController.Login)
+	//使用中间件
+	userPrivate := user.Use(middleware.JWTAuth())
+	userPrivate.GET("list", userController.GetList)
 
 	return nil
 }

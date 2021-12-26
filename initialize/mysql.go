@@ -23,7 +23,7 @@ type writer struct {
 }
 
 func GormMysql() *gorm.DB {
-	m := global.GBConfig.Mysql
+	m := global.CMConfig.Mysql
 	if m.Dbname == "" {
 		return nil
 	}
@@ -59,7 +59,7 @@ func (g *_gorm) Config() *gorm.Config {
 		LogLevel:      logger.Warn,
 		Colorful:      true,
 	})
-	switch global.GBConfig.Mysql.LogMode {
+	switch global.CMConfig.Mysql.LogMode {
 	case "silent", "Silent":
 		config.Logger = _default.LogMode(logger.Silent)
 	case "error", "Error":

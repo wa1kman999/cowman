@@ -50,7 +50,7 @@ func main() {
 // shutdown 关闭服务
 func shutdown() error {
 	// 关闭数据库
-	db, _ := global.GBMysql.DB()
+	db, _ := global.CMMysql.DB()
 	_ = db.Close()
 	// 关闭http服务
 	if err := httpServer.Shutdown(); err != nil {
@@ -66,14 +66,9 @@ func init() {
 	}
 
 	// 初始化mysql连接
-	global.GBMysql = initialize.GormMysql()
-	//if global.GBMysql != nil {
-	//	// 迁移表
-	//	initialize.RegisterTables(global.GBMysql)
-	//}
-
-	// 初始化redis
-	//if err := initialize.RedisClient(); err != nil {
-	//	panic(err)
-	//}
+	global.CMMysql = initialize.GormMysql()
+	if global.CMMysql != nil {
+		// 迁移表
+		initialize.RegisterTables(global.CMMysql)
+	}
 }

@@ -6,6 +6,6 @@ import (
 )
 
 var (
-	GBConfig config.Config
-	GBMysql  *gorm.DB
+	CMConfig config.Config
+	CMMysql  *gorm.DB
 )

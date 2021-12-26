@@ -37,7 +37,7 @@ func router() http.Handler {
 func Serve() error {
 
 	httpServer = &http.Server{
-		Addr:         fmt.Sprintf("%s:%s", global.GBConfig.System.Host, global.GBConfig.System.Port),
+		Addr:         fmt.Sprintf("%s:%s", global.CMConfig.System.Host, global.CMConfig.System.Port),
 		Handler:      router(),
 		ReadTimeout:  300 * time.Second,
 		WriteTimeout: 300 * time.Second,
