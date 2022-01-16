@@ -12,8 +12,6 @@ require (
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-errors/errors v1.4.1
-	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/viper v1.10.1
-	go.uber.org/zap v1.17.0
 	gorm.io/driver/mysql v1.2.2
 )
